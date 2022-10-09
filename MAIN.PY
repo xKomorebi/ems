@@ -31,10 +31,16 @@ def onscroll(axis, *args):
 
 win=Tk()
 win.title("EMS")
-win.geometry("350x450")
+win_width = 350
+win_height = 480
+win_resolution = str(win_width)+"x"+str(win_height)
+win.geometry(win_resolution)
 win.config(bg="orange")
 win.resizable(0,0)
-win.iconbitmap("logo.ico")
+if "nt" == os.name:
+    win.wm_iconbitmap("logo.ico")
+else:
+    win.wm_iconbitmap("@logo.xbm")
 Label(win,text="Employee Management System",bg="brown",fg="white",font=("Georgia",16)).pack(pady=10)
 b1=Button(win,text="Show all Records",bg="white",fg="brown",border=5,relief="raise",font=("Georgia",13),width=20,command=showall)
 b1.pack(pady=8)

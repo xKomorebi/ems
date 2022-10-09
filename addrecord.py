@@ -3,6 +3,7 @@
 from tkinter import messagebox
 from tkinter import *
 import csv
+import os
 
 global ele
 ele=[1,2,3,4]
@@ -41,9 +42,15 @@ def main():
     global ele,eid,name,salary,dept,win
     win=Tk()
     win.title("EMS - Add Employee")
-    win.geometry("300x250")
+    window_height = 250
+    win_width = 330
+    win_resolution = str(win_width) + "x" + str(window_height)
+    win.geometry(win_resolution)
     win.config(bg="orange")
-    win.iconbitmap("logo.ico")
+    if "nt" == os.name:
+        win.wm_iconbitmap("logo.ico")
+    else:
+        win.wm_iconbitmap("@logo.xbm")
     win.resizable(0,0)
     eid=StringVar()
     name=StringVar()
